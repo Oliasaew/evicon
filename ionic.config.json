@@ -1,0 +1,7 @@
+{
+  "name": "classproj",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
