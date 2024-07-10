@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   FormsModule,
@@ -8,8 +8,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { Router } from '@angular/router';
 import { passwordValidator } from '../validators/password-validator';
+import { AuthService } from '../auth/auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -24,10 +25,15 @@ import { passwordValidator } from '../validators/password-validator';
     IonicModule,
   ],
 })
-export class LoginPage {
+export class LoginPage implements OnInit{
+  ngOnInit(){
+    if(this.authService.checkAuthenticated()){
+      this.router.navigate(['/tabs/tab1']);
+    }
+  }
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.loginForm = this.fb.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required, passwordValidator()]],
@@ -44,14 +50,9 @@ export class LoginPage {
         'and password:',
         password
       );
-      // Perform login logic here
-      if (username === 'adminFunny' && password === 'CG89jZH#o*QU!fArK3') {
-        // Redirect to tabs/tabs1 if login is successful
-        this.router.navigate(['/tabs/tab1']);
-      } else {
-        // Handle login failure
-        alert('Invalid username or password');
-      }
+       if (!this.authService.login(username, password)) {
+         console.error('Invalid username or password');
+       }
     }
   }
 }
