@@ -10,7 +10,6 @@ import {
 import { IonicModule } from '@ionic/angular';
 import { passwordValidator } from '../validators/password-validator';
 import { AuthService } from '../auth/auth.service';
-import { Router } from '@angular/router';
 
 
 @Component({
@@ -25,15 +24,10 @@ import { Router } from '@angular/router';
     IonicModule,
   ],
 })
-export class LoginPage implements OnInit{
-  ngOnInit(){
-    if(this.authService.checkAuthenticated()){
-      this.router.navigate(['/tabs/tab1']);
-    }
-  }
+export class LoginPage {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
+  constructor(private fb: FormBuilder, private authService: AuthService) {
     this.loginForm = this.fb.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required, passwordValidator()]],

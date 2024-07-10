@@ -1,10 +1,12 @@
 import { Routes } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
+import { AuthResolver } from './auth/auth.resolver';
 
 export const routes: Routes = [
   {
     path: 'login',
     loadComponent: () => import('./login/login.page').then((m) => m.LoginPage),
+    resolve: { authStatus: AuthResolver },
   },
   {
     path: '',
