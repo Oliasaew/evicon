@@ -1,8 +1,8 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.iti21.classproj',
-  appName: 'classproj',
+  appId: 'com.lemi.evicon',
+  appName: 'evicon',
   webDir: 'www'
 };
 

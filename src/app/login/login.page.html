@@ -1,20 +1,24 @@
 <ion-content>
   <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>Login</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <ion-item>
-          <ion-label position="floating">Username</ion-label>
-          <ion-input formControlName="username"></ion-input>
-        </ion-item>
 
-        <ion-item>
-          <ion-label position="floating">Password</ion-label>
-          <ion-input type="password" formControlName="password"></ion-input>
-        </ion-item>
-        <ion-button expand="full" type="submit" [disabled]="!loginForm.valid">Login</ion-button>
+    <ion-card>
+      <img alt="Silhouette of mountains" src="../../../assets/logologin.jpeg" style="display: block; margin: auto;" />
+      <ion-card-header>
+        <ion-card-title style="text-align: center; color: darkorchid; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; ">LOGIN Leymi APP</ion-card-title>
+        <ion-card-subtitle style="text-align: center; color: darkorchid; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Iniciar sesión</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content>
+        
+          <ion-input type="text" placeholder="Usuario" name="txt_usu" id="txt_usu" formControlName="email"></ion-input><br/>
+          <ion-input type="password" placeholder="Contraseña" name="txt_con" id="txt_con" formControlName="password"></ion-input><br/>
+  
+        <br/>
+          <ion-button
+          type="submit" >
+            Acceder
+          </ion-button>
+        
       </ion-card-content>
     </ion-card>
   </form>

@@ -8,9 +8,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { passwordValidator } from '../validators/password-validator';
+//import { passwordValidator } from '../validators/password-validator';
 import { AuthService } from '../auth/auth.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -27,26 +27,21 @@ import { AuthService } from '../auth/auth.service';
 export class LoginPage {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.loginForm = this.fb.group({
-      username: ['', [Validators.required]],
-      password: ['', [Validators.required, passwordValidator()]],
+      email: ['', [Validators.required]],
+      password: ['', [Validators.required]],
     });
   }
 
-  onLogin() {
+  async onLogin() {
     if (this.loginForm.valid) {
-      const { username, password } = this.loginForm.value;
-      // Handle the login logic here
-      console.log(
-        'Login successful with username:',
-        username,
-        'and password:',
-        password
-      );
-       if (!this.authService.login(username, password)) {
-         console.error('Invalid username or password');
-       }
+      const { email, password } = this.loginForm.value;
+      const logg: boolean = await this.authService.login(email, password);
+      if (logg){
+        // Navigate to the desired page
+        this.router.navigate(['/tabs/tab1']);
+      }
     }
   }
 }

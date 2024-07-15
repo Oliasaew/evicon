@@ -1,5 +1,6 @@
 ion-content {
-  --padding-top: 20px;
+  padding-top: 20px;
+  background-color: white;
 }
 
 form {
@@ -8,14 +9,28 @@ form {
   align-items: center;
   justify-content: center;
   height: 100%;
+
   ion-item {
     width: 90%;
     max-width: 400px;
+    background-color: azure;
   }
 
   ion-button {
-    margin-top: 20px;
-    width: 90%;
-    max-width: 400px;
+    background-color: darkorchid; 
+    color: white; 
+    padding: 4px; 
+    width: 200px; 
+    border-radius: 19px; 
+    display: block; 
+    margin: auto;
+  }
+  ion-card {
+    background-color: white;
+  }
+  ion-input{
+    text-align: center; 
+    color: black; 
+    background-color: gainsboro;
   }
 }
