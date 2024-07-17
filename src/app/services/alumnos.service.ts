@@ -22,6 +22,7 @@ export class StudentsService {
   private db: Firestore;
   public isLoading: boolean = false;
   public alumnos: any[] = [];
+  public results: any[] = [];
   public noResultsFound = false;
 
   constructor(
@@ -48,8 +49,8 @@ export class StudentsService {
 
   async getStudents() {
     this.presentLoading();
-    const querySnapshot = await getDocs(collection(this.db, 'Alumnos-EC'));
-    this.alumnos = querySnapshot.docs.map((doc) => ({
+    const querySnapshot = await getDocs(collection(this.db, 'Alumnos'));
+    this.alumnos = this.results = querySnapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
     }));
@@ -58,7 +59,7 @@ export class StudentsService {
 
   public async handleInput(event: any) {
     const query = event.target.value.toLowerCase();
-    this.alumnos = this.alumnos.filter((alumnos) => {
+    this.results = this.alumnos.filter((alumnos) => {
       return (
         alumnos['Nombre'].toLowerCase().indexOf(query) > -1 ||
         alumnos['Ap. Paterno'].toLowerCase().indexOf(query) > -1 ||
@@ -67,7 +68,7 @@ export class StudentsService {
       );
     });
 
-    this.noResultsFound = this.alumnos.length === 0;
+    this.noResultsFound = this.results.length === 0;
   }
 }
 
