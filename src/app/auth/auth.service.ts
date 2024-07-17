@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { FirebaseApp, initializeApp } from 'firebase/app';
 import { Auth, getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { environment } from 'src/environments/environment.prod';
 
 const firebaseConfig = environment.firebaseConfig;
+
 @Injectable({
   providedIn: 'root',
 })
@@ -14,10 +14,9 @@ export class AuthService {
   private isAuthenticated = false;
   private user: string = '';
 
+  constructor() {}
 
-  constructor(private router: Router) {}
-
-  async login(email: string, password: string):Promise<boolean> {
+  async login(email: string, password: string): Promise<boolean> {
     try {
       const userCredential = await signInWithEmailAndPassword(
         this.auth,
@@ -70,6 +69,4 @@ export class AuthService {
   getUser(): string {
     return this.user;
   }
-
- 
 }
