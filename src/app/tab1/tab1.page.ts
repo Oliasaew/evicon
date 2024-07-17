@@ -4,7 +4,7 @@ import { StudentsService } from '../services/alumnos.service';
 import { CrudService } from './../services/crud.service';
 import { ModalController, AlertController } from '@ionic/angular';
  import { StudentsModalComponent } from '../students-modal/students-modal.component';
-
+ import { AuthService } from '../auth/auth.service';
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -36,13 +36,18 @@ export class Tab1Page {
     public studentsService: StudentsService,
     private modalController: ModalController,
     private crud: CrudService,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private authService: AuthService
   ) {}
   
   ngOnInit() {
     this.studentsService.getStudents();
   }
-
+  logout() {
+    if (confirm('Estás saliendo')){
+      this.authService.logout();
+    }
+  }
   editStudent(slidingItem: IonItemSliding, student: any) {
     slidingItem.close(); // Close the sliding item
     this.openEditModal(student);
