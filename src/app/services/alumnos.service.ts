@@ -35,7 +35,7 @@ export class StudentsService {
   async presentLoading() {
     this.isLoading = true;
     const loading = await this.loadingController.create({
-      message: 'Loading...',
+      message: 'Cargando',
     });
     await loading.present();
 
@@ -62,8 +62,8 @@ export class StudentsService {
     this.results = this.alumnos.filter((alumnos) => {
       return (
         alumnos['Nombre'].toLowerCase().indexOf(query) > -1 ||
-        alumnos['Ap. Paterno'].toLowerCase().indexOf(query) > -1 ||
-        alumnos['Ap. Materno'].toLowerCase().indexOf(query) > -1 ||
+        alumnos['app'].toLowerCase().indexOf(query) > -1 ||
+        alumnos['apm'].toLowerCase().indexOf(query) > -1 ||
         alumnos['Email'].toLowerCase().indexOf(query) > -1
       );
     });

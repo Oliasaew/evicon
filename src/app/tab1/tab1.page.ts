@@ -29,7 +29,7 @@ import { ModalController, AlertController } from '@ionic/angular';
   ],
 })
 export class Tab1Page {
-  title: string = 'Estudiantes';
+  title: string = 'Alumnos';
   students: any[] = [];
 
   constructor(
@@ -49,7 +49,7 @@ export class Tab1Page {
     }
   }
   editStudent(slidingItem: IonItemSliding, student: any) {
-    slidingItem.close(); // Close the sliding item
+    slidingItem.close(); 
     this.openEditModal(student);
   }
 
@@ -58,31 +58,29 @@ export class Tab1Page {
 
     if (confirmDelete) {
       try {
-        await this.crud.deleteDocument('estudiantes', studentId);
-        // Optionally, update UI or provide feedback to the user
-        console.log(`Student ${studentId} successfully deleted.`);
+        await this.crud.deleteDocument('Alumnos', studentId);
+        console.log(`Alumno con matricula ${studentId} eliminado`);
         this.studentsService.getStudents();
       } catch (error) {
         console.error('Error deleting student:', error);
-        // Handle specific errors or provide user-friendly feedback
       }
     }
-    slidingItem.close(); // Close the sliding item
+    slidingItem.close(); 
   }
 
   async presentConfirmDeleteDialog(studentId: string): Promise<boolean> {
     return new Promise<boolean>((resolve) => {
       const confirmAlert = this.alertController.create({
         header: 'Confirm Delete',
-        message: `Are you sure you want to delete the entry: ${studentId}?`,
+        message: `El alumno con la matrícula ${studentId} será eliminado, continuar?`,
         buttons: [
           {
-            text: 'Cancel',
+            text: 'Cancelar',
             role: 'cancel',
             handler: () => resolve(false),
           },
           {
-            text: 'Delete',
+            text: 'Eliminar',
             handler: () => resolve(true),
           },
         ],
@@ -106,7 +104,7 @@ export class Tab1Page {
         if (isNew) {
           // Add new student
           await this.crud.addCustomDocument(
-            'estudiantes',
+            'Alumnos',
             data.data.id,
             formData
           );
@@ -120,7 +118,7 @@ export class Tab1Page {
             this.studentsService.alumnos[index] = data.data;
             // Update the Firestore document
             await this.crud.updateDocument(
-              'estudiantes',
+              'Alumnos',
               student.id,
               formData
             );

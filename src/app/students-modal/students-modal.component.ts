@@ -39,17 +39,17 @@ export class StudentsModalComponent {
   ) {}
 
   ngOnInit() {
-    // Initialize the form
+   
     this.studentForm = this.formBuilder.group({
       id: [
         { value: this.student?.id || '', disabled: !this.isNew },
         [Validators.required, Validators.pattern('^[0-9]{9}$')],
       ],
-      name: [this.student?.name || '', Validators.required],
-      apepat: [this.student?.apepat || '', Validators.required],
-      apemat: [this.student?.apemat || '', Validators.required],
-      email: [
-        this.student?.email || '',
+      Nombre: [this.student?.Nombre || '', Validators.required],
+      app: [this.student?.app || '', Validators.required],
+      apm: [this.student?.apm || '', Validators.required],
+      Email: [
+        this.student?.Email || '',
         [Validators.required, Validators.email],
       ],
     });
@@ -61,7 +61,7 @@ export class StudentsModalComponent {
 
   save() {
     if (this.studentForm.valid) {
-      // Pass the form values, including the disabled ID field, back to the caller
+      
       this.modalController.dismiss(this.studentForm.getRawValue());
     }
   }

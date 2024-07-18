@@ -28,8 +28,8 @@ export class CrudService {
         collection(this.firestore, collectionName),
         data
       );
-      console.log('Document successfully added with ID:', docRef.id);
-      return docRef.id; // Return the document ID
+      console.log('Alumno agregado con matricula:', docRef.id);
+      return docRef.id; 
     } catch (error) {
       throw error;
     }
@@ -43,9 +43,9 @@ export class CrudService {
     try {
       const docRef = doc(this.firestore, `${collectionName}/${documentId}`);
       await setDoc(docRef, data);
-      console.log(`Document with ID ${documentId} successfully added!`);
+      console.log(`Alumno con matricula ${documentId} agregado exitosamente`);
     } catch (error) {
-      console.error('Error adding document:', error);
+      console.error('Error agregando alumno:', error);
       throw error;
     }
   }
@@ -59,7 +59,7 @@ export class CrudService {
     if (docSnap.exists()) {
       return docSnap.data();
     } else {
-      console.log('No such document!');
+      console.log('No existe un alumno con esa matricula');
       return null;
     }
   }
@@ -72,9 +72,9 @@ export class CrudService {
     try {
       const docRef = doc(this.firestore, `${collectionName}/${documentId}`);
       await updateDoc(docRef, data);
-      console.log('Document successfully updated!');
+      console.log('Alumno actualizado');
     } catch (error) {
-      console.error('Error updating document:', error);
+      console.error('Error actualizando:', error);
       throw error;
     }
   }
@@ -86,9 +86,9 @@ export class CrudService {
     try {
       const docRef = doc(this.firestore, `${collectionName}/${documentId}`);
       await deleteDoc(docRef);
-      console.log('Document successfully deleted!');
+      console.log('Alumno eliminado');
     } catch (error) {
-      console.error('Error deleting document:', error);
+      console.error('Error eliminando:', error);
       throw error;
     }
   }

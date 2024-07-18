@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title>{{ isNew ? 'Add Student' : 'Edit Student' }}</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="dismiss()">Close</ion-button>
+      <ion-button (click)="dismiss()">Cerrar</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -22,39 +22,39 @@
 
           <ion-item>
             <ion-label position="floating">Nombre</ion-label>
-            <ion-input formControlName="name"></ion-input>
+            <ion-input formControlName="Nombre"></ion-input>
           </ion-item>
-          <ion-item *ngIf="studentForm.get('name')!.invalid && studentForm.get('name')!.touched">
+          <ion-item *ngIf="studentForm.get('Nombre')!.invalid && studentForm.get('Nombre')!.touched">
             <ion-label color="danger">Nombre es requerido.</ion-label>
           </ion-item>
 
           <ion-item>
             <ion-label position="floating">Apellido Paterno</ion-label>
-            <ion-input formControlName="apepat"></ion-input>
+            <ion-input formControlName="app"></ion-input>
           </ion-item>
-          <ion-item *ngIf="studentForm.get('apepat')!.invalid && studentForm.get('apepat')!.touched">
+          <ion-item *ngIf="studentForm.get('app')!.invalid && studentForm.get('app')!.touched">
             <ion-label color="danger">Apellido Paterno es requerido.</ion-label>
           </ion-item>
 
           <ion-item>
             <ion-label position="floating">Apellido Materno</ion-label>
-            <ion-input formControlName="apemat"></ion-input>
+            <ion-input formControlName="apm"></ion-input>
           </ion-item>
-          <ion-item *ngIf="studentForm.get('apemat')!.invalid && studentForm.get('apemat')!.touched">
+          <ion-item *ngIf="studentForm.get('apm')!.invalid && studentForm.get('apm')!.touched">
             <ion-label color="danger">Apellido Materno es requerido.</ion-label>
           </ion-item>
 
           <ion-item>
             <ion-label position="floating">Email</ion-label>
-            <ion-input type="email" formControlName="email"></ion-input>
+            <ion-input type="Email" formControlName="Email"></ion-input>
           </ion-item>
-          <ion-item *ngIf="studentForm.get('email')!.invalid && studentForm.get('email')!.touched">
-            <ion-label color="danger">Por favor introduce un email válido.</ion-label>
+          <ion-item *ngIf="studentForm.get('Email')!.invalid && studentForm.get('Email')!.touched">
+            <ion-label color="danger">Por favor introduce un Email válido.</ion-label>
           </ion-item>
         </ion-list>
         <ion-footer>
           <ion-button expand="block" type="submit" [disabled]="studentForm!.invalid">
-            {{ isNew ? 'Add' : 'Save' }}
+            {{ isNew ? 'Add' : 'Guardar' }}
           </ion-button>
         </ion-footer>
       </form>
