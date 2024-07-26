@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonButton, IonItem, IonLabel, IonList, IonSpinner, IonItemOption, IonItemOptions, IonItemSliding, IonSearchbar, IonButtons, IonIcon } from '@ionic/angular/standalone';
-import { StudentsService } from '../services/alumnos.service';
+import { ServiciosAlumnos } from '../services/alumnos.service';
 import { CrudService } from './../services/crud.service';
 import { ModalController, AlertController } from '@ionic/angular';
  import { StudentsModalComponent } from '../students-modal/students-modal.component';
  import { AuthService } from '../auth/auth.service';
+import { add, arrowBackCircleOutline, arrowForwardCircleOutline, logOut, logOutOutline, schoolOutline } from 'ionicons/icons';
+import { addIcons } from 'ionicons';
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -33,12 +35,13 @@ export class Tab1Page {
   students: any[] = [];
 
   constructor(
-    public studentsService: StudentsService,
+    public studentsService: ServiciosAlumnos,
     private modalController: ModalController,
-    private crud: CrudService,
+    public crud: CrudService,
     private alertController: AlertController,
     private authService: AuthService
-  ) {}
+  ) {addIcons({add, arrowForwardCircleOutline});
+   }
   
   ngOnInit() {
     this.studentsService.getStudents();
@@ -50,7 +53,7 @@ export class Tab1Page {
   }
   editStudent(slidingItem: IonItemSliding, student: any) {
     slidingItem.close(); 
-    this.openEditModal(student);
+    this.openModal(student);
   }
 
   async deleteStudent(slidingItem: IonItemSliding, studentId: string) {
@@ -71,7 +74,7 @@ export class Tab1Page {
   async presentConfirmDeleteDialog(studentId: string): Promise<boolean> {
     return new Promise<boolean>((resolve) => {
       const confirmAlert = this.alertController.create({
-        header: 'Confirm Delete',
+        header: 'Confirmar borrado',
         message: `El alumno con la matrícula ${studentId} será eliminado, continuar?`,
         buttons: [
           {
@@ -90,7 +93,7 @@ export class Tab1Page {
     });
   }
 
-  async openEditModal(student: any, isNew = false) {
+  async openModal(student: any, isNew = false) {
     const modal = await this.modalController.create({
       component: StudentsModalComponent,
       componentProps: { student, isNew },

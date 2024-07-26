@@ -1,7 +1,7 @@
 {
-  "name": "classproj",
+  "name": "evicon",
   "version": "0.0.1",
-  "author": "2021030063",
+  "author": "2021030055",
   "homepage": "https://localhost:4200/",
   "scripts": {
     "ng": "ng",
@@ -30,6 +30,7 @@
     "firebase": "^10.12.3",
     "ionicons": "^7.4.0",
     "rxjs": "~7.8.1",
+    "swiper": "^11.1.5",
     "tslib": "^2.6.3",
     "zone.js": "~0.14.7"
   },
@@ -61,6 +62,6 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.4.5"
   },
-  "description": "Proyecto grupal de la clase de Cristo",
+  "description": "Proyecto de la clase de Cristo",
   "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
 }

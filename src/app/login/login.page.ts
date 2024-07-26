@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   FormsModule,
@@ -8,7 +8,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-//import { passwordValidator } from '../validators/password-validator';
 import { AuthService } from '../auth/auth.service';
 import { Router } from '@angular/router';
 
@@ -23,6 +22,7 @@ import { Router } from '@angular/router';
     ReactiveFormsModule,
     IonicModule,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class LoginPage {
   loginForm: FormGroup;

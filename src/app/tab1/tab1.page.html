@@ -6,11 +6,15 @@
           {{ title }}
         </ion-title>
         <ion-buttons slot="end">
-          <ion-button (click)="this.logout()">Salir</ion-button>
+          <ion-button (click)="openModal({}, true)" ng-reflect-name="Agregar estudiante">
+          <ion-icon slot="icon-only" name="add"></ion-icon></ion-button>
+          <ion-button (click)="this.logout()" ng-reflect-name="Salir">
+            <ion-icon slot="icon-only" name="arrow-forward-circle-outline"></ion-icon></ion-button>
         </ion-buttons>
+        <ion-searchbar [debounce]="1000" (ionInput)="this.studentsService.handleInput($event)" animated="true"></ion-searchbar>
       </ion-toolbar>
     </ion-header>
- 
+    
 
   <ion-card>
     <ion-card-content>

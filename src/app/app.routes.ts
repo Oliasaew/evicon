@@ -13,4 +13,5 @@ export const routes: Routes = [
     loadChildren: () => import('./tabs/tabs.routes').then((m) => m.routes),
     canActivate: [AuthGuard], // Protect the child routes with AuthGuard
   },
+
 ];

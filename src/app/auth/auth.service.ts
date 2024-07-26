@@ -35,7 +35,7 @@ export class AuthService {
       if (error instanceof Error) {
         // Check if errorMessage contains invalid-credential
         if (error.message.includes('invalid-credential')) {
-          alert('Invalid email or password');
+          alert('Email o contraseña inválidos');
         } else {
           console.error(error);
         }

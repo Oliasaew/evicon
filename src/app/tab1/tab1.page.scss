@@ -1,0 +1,37 @@
+// Define colors
+$add-button-color: #28a745; // Verde para agregar
+$add-button-hover-color: darken($add-button-color, 18%);
+$exit-button-color: #dc3545; // Rojo para salir
+$exit-button-hover-color: darken($exit-button-color, 18%);
+
+ion-button {
+  &[ng-reflect-name="Agregar estudiante"] {
+    background-color: $add-button-color;
+    color: #fff;
+    border-radius: 20px; 
+
+    &:hover {
+      background-color: $add-button-hover-color;
+    }
+
+    &.ion-focus,
+    &.ion-activated {
+      background-color: $add-button-hover-color;
+    }
+  }
+
+  &[ng-reflect-name="Salir"] {
+    background-color: $exit-button-color;
+    color: #fff; 
+    border-radius: 20px; 
+
+    &:hover {
+      background-color: $exit-button-hover-color;
+    }
+
+    &.ion-focus,
+    &.ion-activated {
+      background-color: $exit-button-hover-color;
+    }
+  }
+}

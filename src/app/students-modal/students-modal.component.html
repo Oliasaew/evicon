@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{ isNew ? 'Add Student' : 'Edit Student' }}</ion-title>
+    <ion-title>{{ isNew ? 'Agregar alumno' : 'Editar alumno' }}</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="dismiss()">Cerrar</ion-button>
     </ion-buttons>
@@ -25,7 +25,7 @@
             <ion-input formControlName="Nombre"></ion-input>
           </ion-item>
           <ion-item *ngIf="studentForm.get('Nombre')!.invalid && studentForm.get('Nombre')!.touched">
-            <ion-label color="danger">Nombre es requerido.</ion-label>
+            <ion-label color="danger">Nombre está vacío.</ion-label>
           </ion-item>
 
           <ion-item>
@@ -33,7 +33,7 @@
             <ion-input formControlName="app"></ion-input>
           </ion-item>
           <ion-item *ngIf="studentForm.get('app')!.invalid && studentForm.get('app')!.touched">
-            <ion-label color="danger">Apellido Paterno es requerido.</ion-label>
+            <ion-label color="danger">Apellido Paterno está vacío.</ion-label>
           </ion-item>
 
           <ion-item>
@@ -41,7 +41,7 @@
             <ion-input formControlName="apm"></ion-input>
           </ion-item>
           <ion-item *ngIf="studentForm.get('apm')!.invalid && studentForm.get('apm')!.touched">
-            <ion-label color="danger">Apellido Materno es requerido.</ion-label>
+            <ion-label color="danger">Apellido Materno está vacío.</ion-label>
           </ion-item>
 
           <ion-item>
@@ -54,7 +54,7 @@
         </ion-list>
         <ion-footer>
           <ion-button expand="block" type="submit" [disabled]="studentForm!.invalid">
-            {{ isNew ? 'Add' : 'Guardar' }}
+            {{ isNew ? 'Agregar' : 'Guardar' }}
           </ion-button>
         </ion-footer>
       </form>

@@ -18,7 +18,7 @@ import { LoadingController } from '@ionic/angular';
 @Injectable({
   providedIn: 'root',
 })
-export class StudentsService {
+export class ServiciosAlumnos {
   private db: Firestore;
   public isLoading: boolean = false;
   public alumnos: any[] = [];
